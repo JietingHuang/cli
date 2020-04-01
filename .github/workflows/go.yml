@@ -19,7 +19,5 @@ jobs:
 
       - name: Run golangci-lint
         uses: docker://golangci/golangci-lint:v1.24-a
-        run: |
-          pwd
-          which -a golangci-lint
-          golangci-lint run -v
+        with:
+          args: run
