@@ -25,3 +25,8 @@ jobs:
         run: |
           go test -race ./...
           go build -v ./cmd/gh
+
+      - name: Run golangci-lint
+        uses: actions-contrib/golangci-lint@v1
+        with:
+          golangci_lint_version: v1.24
