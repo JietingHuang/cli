@@ -18,6 +18,6 @@ jobs:
       #     go build -v ./cmd/gh
 
       - name: Run golangci-lint
-        uses: docker://golangci/golangci-lint:v1.24-a
+        uses: docker://golangci/golangci-lint:v1.24-alpine
         with:
           args: run
