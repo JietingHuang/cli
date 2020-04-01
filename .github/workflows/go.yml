@@ -2,18 +2,9 @@ name: Tests
 on: [push, pull_request]
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Go 1.13
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.13
-
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
@@ -27,8 +18,8 @@ jobs:
       #     go build -v ./cmd/gh
 
       - name: Run golangci-lint
-        uses: actions-contrib/golangci-lint@v1
-        with:
-          golangci_lint_version: v1.24
-        env:
-          GOROOT: ""
+        uses: docker://golangci/golangci-lint:v1.24-a
+        run: |
+          pwd
+          which -a golangci-lint
+          golangci-lint run -v
