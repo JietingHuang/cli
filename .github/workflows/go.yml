@@ -20,4 +20,4 @@ jobs:
       - name: Run golangci-lint
         uses: docker://golangci/golangci-lint:v1.24-alpine
         with:
-          args: run
+          args: golangci-lint run
